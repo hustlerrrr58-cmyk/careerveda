@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle - Flipkart Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+    /* =========================================
+       FLIPKART ORIGINAL DESIGN SYSTEM (NO SLOP)
+       ========================================= */
+    :root {
+      --fk-blue: #2874f0;
+      --fk-yellow: #ffe500;
+      --fk-orange: #fb641b;
+      --fk-btn-yellow: #ff9f00;
+      --fk-bg: #f1f3f6;
+      --fk-text: #212121;
+      --fk-muted: #878787;
+      --fk-green: #388e3c;
+      --fk-border: #e0e0e0;
+      --fk-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--fk-bg);
+      color: var(--fk-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    .fk-header {
+      background-color: var(--fk-blue);
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .fk-nav-container {
+      width: 100%;
+      max-width: 1240px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .fk-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      cursor: pointer;
+    }
+
+    .fk-logo-text {
+      color: var(--fk-white);
+      font-size: 20px;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .fk-plus-text {
+      font-size: 11px;
+      color: #f0f0f0;
+      font-style: italic;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .fk-plus-text span {
+      color: var(--fk-yellow);
+      font-weight: 700;
+    }
+
+    /* Search Bar */
+    .fk-search-wrap {
+      flex: 1;
+      max-width: 560px;
+      position: relative;
+    }
+
+    .fk-search-input {
+      width: 100%;
+      height: 36px;
+      padding: 0 40px 0 16px;
+      border-radius: 2px;
+      border: none;
+      font-size: 14px;
+      outline: none;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.23);
+    }
+
+    .fk-search-input::placeholder {
+      color: var(--fk-muted);
+    }
+
+    .fk-search-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--fk-blue);
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    /* Nav Actions */
+    .fk-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .fk-login-btn {
+      background-color: var(--fk-white);
+      color: var(--fk-blue);
+      border: 1px solid #dbdbdb;
+      padding: 5px 36px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .fk-login-btn:hover {
+      background-color: #f7f7f7;
+    }
+
+    .fk-nav-link {
+      color: var(--fk-white);
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .fk-cart-count {
+      background-color: var(--fk-orange);
+      color: white;
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      margin-left: -4px;
+      font-weight: 700;
+    }
+
+    /* ---------------- CATEGORY BAR ---------------- */
+    .fk-categories {
+      background: var(--fk-white);
+      box-shadow: 0 1px 2px rgba(0,0,0,.1);
+      margin-bottom: 10px;
+    }
+
+    .fk-cat-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      overflow-x: auto;
+    }
+
+    .fk-cat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-width: 72px;
+      cursor: pointer;
+    }
+
+    .fk-cat-item i {
+      font-size: 26px;
+      color: #333;
+      margin-bottom: 6px;
+      transition: color 0.15s;
+    }
+
+    .fk-cat-item span {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .fk-cat-item:hover span {
+      color: var(--fk-blue);
+    }
+    .fk-cat-item:hover i {
+      color: var(--fk-blue);
+    }
+
+    /* ---------------- HERO BANNER SLIDER ---------------- */
+    .fk-banner-slider {
+      max-width: 1240px;
+      margin: 0 auto 12px;
+      position: relative;
+      overflow: hidden;
+      background: #e4e7eb;
+      height: 240px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .fk-slide-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .fk-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      color: var(--fk-white);
+    }
+
+    .slide-1 { background: linear-gradient(90deg, #184e94, #2874f0); }
+    .slide-2 { background: linear-gradient(90deg, #1c2b39, #293845); }
+    .slide-3 { background: linear-gradient(90deg, #b01f30, #e03247); }
+
+    .slide-content h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .slide-content p {
+      font-size: 18px;
+      color: var(--fk-yellow);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .slide-content .slide-cta {
+      display: inline-block;
+      background: var(--fk-white);
+      color: var(--fk-text);
+      font-weight: 700;
+      padding: 8px 22px;
+      font-size: 13px;
+      border-radius: 2px;
+    }
+
+    .slide-art {
+      font-size: 110px;
+      opacity: 0.85;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.95);
+      border: none;
+      width: 40px;
+      height: 70px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #333;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+      border-radius: 2px;
+    }
+    .slider-btn.prev { left: 0; border-radius: 0 3px 3px 0; }
+    .slider-btn.next { right: 0; border-radius: 3px 0 0 3px; }
+
+    /* ---------------- PRODUCT SECTIONS ---------------- */
+    .fk-section {
+      max-width: 1240px;
+      margin: 0 auto 16px;
+      background: var(--fk-white);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      display: flex;
+    }
+
+    .fk-deal-highlight {
+      width: 220px;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid var(--fk-border);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><text y="50" font-size="20">FLIPKART</text></svg>');
+    }
+
+    .fk-deal-highlight h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .fk-view-all-btn {
+      background: var(--fk-blue);
+      color: white;
+      border: none;
+      padding: 9px 18px;
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 2px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .fk-products-rail {
+      flex: 1;
+      display: flex;
+      overflow-x: auto;
+      padding: 16px;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+
+    .fk-products-rail::-webkit-scrollbar {
+      height: 6px;
+    }
+    .fk-products-rail::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+
+    /* Product Card */
+    .fk-card {
+      min-width: 190px;
+      max-width: 190px;
+      padding: 14px 10px;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .fk-card:hover {
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      border-color: #eee;
+    }
+
+    .fk-card-img-wrap {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .fk-card-img-wrap i {
+      font-size: 80px;
+      color: #3f4753;
+      transition: transform 0.2s;
+    }
+    .fk-card:hover .fk-card-img-wrap i {
+      transform: scale(1.05);
+    }
+
+    .fk-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    .fk-card-offer {
+      color: var(--fk-green);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .fk-card-desc {
+      color: var(--fk-muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .fk-price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .curr-price {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .old-price {
+      font-size: 12px;
+      color: var(--fk-muted);
+      text-decoration: line-through;
+    }
+
+    .fk-add-cart-btn {
+      width: 100%;
+      background: var(--fk-btn-yellow);
+      color: #fff;
+      border: none;
+      padding: 6px 0;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .fk-add-cart-btn:hover {
+      background: #f09500;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    .fk-footer {
+      background-color: #172337;
+      color: var(--fk-white);
+      padding: 40px 16px 20px;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+
+    .fk-footer-top {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #454d5e;
+    }
+
+    .fk-footer-col h4 {
+      color: var(--fk-muted);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .fk-footer-col ul {
+      list-style: none;
+    }
+
+    .fk-footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .fk-footer-col ul li a {
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .fk-footer-col ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .fk-footer-bottom {
+      max-width: 1240px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .fk-footer-features {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .fk-footer-features span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .fk-footer-features i {
+      color: var(--fk-yellow);
+    }
+
+    /* ---------------- LOGIN MODAL ---------------- */
+    .fk-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .fk-modal {
+      display: flex;
+      width: 680px;
+      min-height: 480px;
+      background: #fff;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-left {
+      background: var(--fk-blue);
+      color: #fff;
+      width: 40%;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .modal-left h2 { font-size: 26px; font-weight: 600; }
+    .modal-left p { font-size: 16px; color: #dbdbdb; margin-top: 14px; line-height: 1.4; }
+
+    .modal-right {
+      width: 60%;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .modal-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--fk-border);
+      padding: 10px 0;
+      font-size: 15px;
+      outline: none;
+      margin-bottom: 20px;
+    }
+    .modal-input:focus {
+      border-bottom: 2px solid var(--fk-blue);
+    }
+
+    .modal-terms {
+      font-size: 12px;
+      color: var(--fk-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .modal-terms a { color: var(--fk-blue); }
+
+    .modal-otp-btn {
+      width: 100%;
+      background: var(--fk-orange);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      font-size: 22px;
+      color: #555;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Toast notification */
+    .fk-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #212121;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 3px;
+      font-size: 14px;
+      display: none;
+      z-index: 3000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .fk-deal-highlight { display: none; }
+      .fk-search-wrap { max-width: 100%; }
+      .fk-nav-actions .fk-nav-link:not(:last-child) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="fk-header">
+    <div class="fk-nav-container">
+      <!-- Logo -->
+      <div class="fk-brand" onclick="location.reload()">
+        <span class="fk-logo-text">Flipkart</span>
+        <span class="fk-plus-text">Explore <span>Plus</span> <i class="fa-solid fa-star" style="font-size: 9px;"></i></span>
+      </div>
+
+      <!-- Search Input -->
+      <div class="fk-search-wrap">
+        <input type="text" id="fkSearch" class="fk-search-input" placeholder="Search for Products, Brands and More">
+        <i class="fa-solid fa-magnifying-glass fk-search-icon" onclick="triggerSearch()"></i>
+      </div>
+
+      <!-- Actions -->
+      <div class="fk-nav-actions">
+        <button class="fk-login-btn" id="openLogin">Login</button>
+        <a href="#seller" class="fk-nav-link">Become a Seller</a>
+        <a href="#more" class="fk-nav-link">More <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i></a>
+        <a href="#cart" class="fk-nav-link" onclick="openCartToast()">
+          <i class="fa-solid fa-cart-shopping"></i> Cart
+          <span class="fk-cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CATEGORY BAR ================= -->
+  <nav class="fk-categories">
+    <div class="fk-cat-container">
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-basket-shopping" style="color: #1a9f53;"></i>
+        <span>Grocery</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-mobile-screen-button" style="color: #2874f0;"></i>
+        <span>Mobiles</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-shirt" style="color: #e63946;"></i>
+        <span>Fashion</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-laptop" style="color: #457b9d;"></i>
+        <span>Electronics</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-couch" style="color: #e76f51;"></i>
+        <span>Home & Furn.</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-tv" style="color: #2a9d8f;"></i>
+        <span>Appliances</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-plane-departure" style="color: #3f51b5;"></i>
+        <span>Travel</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: #d81b60;"></i>
+        <span>Beauty & Toys</span>
+      </div>
+      <div class="fk-cat-item">
+        <i class="fa-solid fa-motorcycle" style="color: #fb8500;"></i>
+        <span>Two Wheelers</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SLIDER ================= -->
+  <section class="fk-banner-slider">
+    <div class="fk-slide-track" id="sliderTrack">
+      
+      <!-- Slide 1 -->
+      <div class="fk-slide slide-1">
+        <div class="slide-content">
+          <h2>Grand Electronics Fest</h2>
+          <p>Up to 80% Off on Laptops, Audio & Monitors</p>
+          <span class="slide-cta">Grab Now <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+        </div>
+        <div class="slide-art"><i class="fa-solid fa-headphones"></i></div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="fk-slide slide-2">
+        <div class="slide-content">
+          <h2>Next-Gen Flagship Mobiles</h2>
+          <p>Extra ₹5,000 Off on Exchange Deals</p>
+          <span class="slide-cta">Explore Deals <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+        </div>
+        <div class="slide-art"><i class="fa-solid fa-mobile-retro"></i></div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="fk-slide slide-3">
+        <div class="slide-content">
+          <h2>Top Fashion Trends</h2>
+          <p>Min. 60% Off on T-shirts, Shoes & Watches</p>
+          <span class="slide-cta">Shop Collection <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></span>
+        </div>
+        <div class="slide-art"><i class="fa-solid fa-gem"></i></div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="slider-btn prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slider-btn next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+  </section>
+
+  <!-- ================= BEST OF ELECTRONICS RAIL ================= -->
+  <section class="fk-section">
+    <div class="fk-deal-highlight">
+      <h3>Best of Electronics</h3>
+      <button class="fk-view-all-btn">VIEW ALL</button>
+    </div>
+
+    <div class="fk-products-rail" id="electronicsRail">
+      <!-- Item 1 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-headphones-simple"></i>
+        </div>
+        <div class="fk-card-title">Wireless ANC Headphones</div>
+        <div class="fk-card-offer">From ₹1,499</div>
+        <div class="fk-card-desc">Sony, Boat & JBL</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹1,499</span>
+          <span class="old-price">₹3,999</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('ANC Headphones')">Add to Cart</button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-laptop"></i>
+        </div>
+        <div class="fk-card-title">Core i5 Thin Laptops</div>
+        <div class="fk-card-offer">From ₹38,990</div>
+        <div class="fk-card-desc">HP, Dell & Asus</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹38,990</span>
+          <span class="old-price">₹54,990</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Core i5 Laptop')">Add to Cart</button>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="fk-card-title">AMOLED Smartwatches</div>
+        <div class="fk-card-offer">Min. 50% Off</div>
+        <div class="fk-card-desc">Noise, Fire-Boltt</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹1,799</span>
+          <span class="old-price">₹4,999</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Smartwatch')">Add to Cart</button>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-camera"></i>
+        </div>
+        <div class="fk-card-title">Mirrorless Cameras</div>
+        <div class="fk-card-offer">Up to 35% Off</div>
+        <div class="fk-card-desc">Canon & Nikon</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹44,990</span>
+          <span class="old-price">₹58,990</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Camera')">Add to Cart</button>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-hard-drive"></i>
+        </div>
+        <div class="fk-card-title">2TB External Hard Drives</div>
+        <div class="fk-card-offer">Special Price</div>
+        <div class="fk-card-desc">Seagate & WD</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹4,999</span>
+          <span class="old-price">₹7,200</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('2TB Hard Drive')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOP DEALS ON FASHION ================= -->
+  <section class="fk-section">
+    <div class="fk-deal-highlight">
+      <h3>Today's Top Fashion Deals</h3>
+      <button class="fk-view-all-btn">VIEW ALL</button>
+    </div>
+
+    <div class="fk-products-rail">
+      <!-- Item 1 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-shoe-prints"></i>
+        </div>
+        <div class="fk-card-title">Men's Running Shoes</div>
+        <div class="fk-card-offer">Under ₹999</div>
+        <div class="fk-card-desc">Puma, Asian, Sparx</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹899</span>
+          <span class="old-price">₹2,499</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Running Shoes')">Add to Cart</button>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-glasses"></i>
+        </div>
+        <div class="fk-card-title">Polarized Sunglasses</div>
+        <div class="fk-card-offer">Min 70% Off</div>
+        <div class="fk-card-desc">Vincent Chase & Fastrack</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹649</span>
+          <span class="old-price">₹1,999</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Sunglasses')">Add to Cart</button>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-vest"></i>
+        </div>
+        <div class="fk-card-title">Cotton Slim Fit Shirts</div>
+        <div class="fk-card-offer">From ₹399</div>
+        <div class="fk-card-desc">Highlander & Dennis Lingo</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹499</span>
+          <span class="old-price">₹1,299</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Slim Fit Shirt')">Add to Cart</button>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="fk-card">
+        <div class="fk-card-img-wrap">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div class="fk-card-title">Laptop Backpacks</div>
+        <div class="fk-card-offer">Up to 65% Off</div>
+        <div class="fk-card-desc">American Tourister</div>
+        <div class="fk-price-box">
+          <span class="curr-price">₹999</span>
+          <span class="old-price">₹2,800</span>
+        </div>
+        <button class="fk-add-cart-btn" onclick="addToCart('Backpack')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUTHENTIC FOOTER ================= -->
+  <footer class="fk-footer">
+    <div class="fk-footer-top">
+      <div class="fk-footer-col">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Flipkart Stories</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Corporate Information</a></li>
+        </ul>
+      </div>
+
+      <div class="fk-footer-col">
+        <h4>HELP</h4>
+        <ul>
+          <li><a href="#">Payments</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Cancellation & Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Report Infringement</a></li>
+        </ul>
+      </div>
+
+      <div class="fk-footer-col">
+        <h4>CONSUMER POLICY</h4>
+        <ul>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
+
+      <div class="fk-footer-col">
+        <h4>MAIL US:</h4>
+        <p style="color: #fff; line-height: 1.5; font-size: 11px;">
+          Flipkart Internet Private Limited,<br>
+          Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br>
+          Outer Ring Road, Devarabeesanahalli Village,<br>
+          Bengaluru, 560103, Karnataka, India
+        </p>
+      </div>
+    </div>
+
+    <div class="fk-footer-bottom">
+      <div class="fk-footer-features">
+        <span><i class="fa-solid fa-briefcase"></i> Become a Seller</span>
+        <span><i class="fa-solid fa-star"></i> Advertise</span>
+        <span><i class="fa-solid fa-gift"></i> Gift Cards</span>
+        <span><i class="fa-regular fa-circle-question"></i> Help Center</span>
+      </div>
+      <div>
+        <span>© 2007-2026 Flipkart.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= LOGIN MODAL ================= -->
+  <div class="fk-modal-overlay" id="loginModal">
+    <div class="fk-modal">
+      <button class="close-modal" id="closeLogin">&times;</button>
+      <div class="modal-left">
+        <div>
+          <h2>Login</h2>
+          <p>Get access to your Orders, Wishlist and Recommendations</p>
+        </div>
+        <div style="font-size: 100px; opacity: 0.15; text-align: center;">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+      </div>
+      <div class="modal-right">
+        <div>
+          <input type="text" class="modal-input" placeholder="Enter Email/Mobile number">
+          <p class="modal-terms">
+            By continuing, you agree to Flipkart's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+          </p>
+          <button class="modal-otp-btn" onclick="requestOtp()">Request OTP</button>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="#" style="color: var(--fk-blue); font-size: 14px; font-weight: 600;">New to Flipkart? Create an account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="fk-toast" id="fkToast">Item added to cart!</div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // 1. Hero Banner Carousel Logic
+    let currentSlide = 0;
+    const track = document.getElementById('sliderTrack');
+    const totalSlides = 3;
+
+    function moveSlide(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Auto-scroll banners every 4 seconds
+    let slideTimer = setInterval(() => moveSlide(1), 4000);
+
+    // Pause on hover
+    const sliderContainer = document.querySelector('.fk-banner-slider');
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(slideTimer));
+    sliderContainer.addEventListener('mouseleave', () => {
+      slideTimer = setInterval(() => moveSlide(1), 4000);
+    });
+
+    // 2. Cart Counter & Toast Notification
+    let cartTotal = 0;
+    const cartCountEl = document.getElementById('cartCount');
+    const toast = document.getElementById('fkToast');
+
+    function showToast(msg) {
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2500);
+    }
+
+    function addToCart(itemName) {
+      cartTotal++;
+      cartCountEl.innerText = cartTotal;
+      showToast(`Added "${itemName}" to your Flipkart Cart!`);
+    }
+
+    function openCartToast() {
+      showToast(`You have ${cartTotal} item(s) in your Cart.`);
+    }
+
+    // 3. Search Bar Interaction
+    function triggerSearch() {
+      const q = document.getElementById('fkSearch').value.trim();
+      if (q) {
+        showToast(`Searching Flipkart for "${q}"...`);
+      } else {
+        document.getElementById('fkSearch').focus();
+      }
+    }
+
+    document.getElementById('fkSearch').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') triggerSearch();
+    });
+
+    // 4. Login Modal Logic
+    const loginModal = document.getElementById('loginModal');
+    const openLoginBtn = document.getElementById('openLogin');
+    const closeLoginBtn = document.getElementById('closeLogin');
+
+    openLoginBtn.onclick = () => { loginModal.style.display = 'flex'; };
+    closeLoginBtn.onclick = () => { loginModal.style.display = 'none'; };
+    loginModal.onclick = (e) => {
+      if (e.target === loginModal) loginModal.style.display = 'none';
+    };
+
+    function requestOtp() {
+      showToast('OTP sent successfully to your number!');
+      setTimeout(() => {
+        loginModal.style.display = 'none';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
+
+
+
